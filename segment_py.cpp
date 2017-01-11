@@ -24,7 +24,7 @@ static void check_image_format(const boost::numpy::ndarray& input_image)
     if(input_image.get_dtype() != boost::numpy::dtype::get_builtin<unsigned char>())
         throw std::runtime_error("dtype of input_image must be uint8");
 
-    if(!input_image.get_flags() & boost::numpy::ndarray::C_CONTIGUOUS)
+    if(!input_image.get_flags() && boost::numpy::ndarray::C_CONTIGUOUS)
         throw std::runtime_error("input_image must be C-style contiguous");
 }
 
